@@ -37,15 +37,5 @@ def about():
 def contact():
     return render_template('contact.html')
 
-@app.route('/predictions-history')
-def predictions_history():
-    # Example of loading previous predictions (for illustration)
-    previous_predictions = [
-        {"date": "2024-11-01", "output": 12.3},
-        {"date": "2024-11-02", "output": 13.1},
-        # Add more historical data
-    ]
-    return render_template('history.html', history=previous_predictions)
-
 if __name__ == "__main__":
     app.run(debug=True)
