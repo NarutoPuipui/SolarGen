@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predictions History - SolarGen Predictor</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="logo">SolarGen Predictor</a>
+            <div class="navbar-links">
+                <a href="/">Home</a>
+                <a href="/features">Features</a>
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+                <a href="/predictions-history" class="active">Predictions History</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="history">
+        <h1>Predictions History</h1>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Prediction</th>
+            </tr>
+            {% for entry in history %}
+            <tr>
+                <td>{{ entry.date }}</td>
+                <td>{{ entry.output }} kW</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+</body>
+</html>

@@ -1,5 +1,4 @@
-
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, render_template
 import pickle
 import numpy as np
 
@@ -24,7 +23,29 @@ def predict():
     prediction = model.predict(final_features)
     output = round(prediction[0], 2)
 
-    return render_template('index.html', prediction_text='Prediction: {}'.format(output))
+    return render_template('index.html', prediction_text=f'Predicted Energy Output: {output} kW')
+
+@app.route('/features')
+def features():
+    return render_template('features.html')
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+@app.route('/predictions-history')
+def predictions_history():
+    # Example of loading previous predictions (for illustration)
+    previous_predictions = [
+        {"date": "2024-11-01", "output": 12.3},
+        {"date": "2024-11-02", "output": 13.1},
+        # Add more historical data
+    ]
+    return render_template('history.html', history=previous_predictions)
 
 if __name__ == "__main__":
     app.run(debug=True)
